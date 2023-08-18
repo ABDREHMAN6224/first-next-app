@@ -1,5 +1,5 @@
 .page{
-    height: 700px;
+    /* height: 700px; */
     padding: 2rem 4rem;
     position: relative;
 }
@@ -26,5 +26,8 @@
 @media (max-width:990px){
     .image_container{
         grid-template-columns: 1fr;
+    }
+    .dog{
+        display: none;
     }
 }

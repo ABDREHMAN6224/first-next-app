@@ -6,15 +6,9 @@ import SingleProduct from "@/components/SingleProduct";
 
 import { MapContainer, TileLayer ,Marker,Popup} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import L from 'leaflet';
 
-delete L.Icon.Default.prototype._getIconUrl;
+import L from "leaflet";
 
-L.Icon.Default.mergeOptions({
-    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-    iconUrl: require('leaflet/dist/images/marker-icon.png'),
-    shadowUrl: require('leaflet/dist/images/marker-shadow.png')
-});
 const Store = () => {
  
 
@@ -25,8 +19,6 @@ const Store = () => {
       title: "Maison Goyard PARIS 233",
       desc: "233 Rue Saint-Honoré, 75001 Paris",
       number: "+1 2128130005",
-      lat: "48.86650",
-      lng: "2.32891",
       time: "10:00 — 19:00",
       code: [48.8665, 2.32891],
     },
@@ -37,8 +29,7 @@ const Store = () => {
       title: "Maison Goyard PARIS 66",
       time: "10:00 — 19:00",
       desc: "66, Rue François 1er, 75008 Paris",
-      lng: "48.867555231276015",
-      lat: " 2.328820801885616",
+     
       code: [48.867555231276015, 2.328820801885616],
     },
     {
@@ -48,8 +39,6 @@ const Store = () => {
       desc: "4 Avenue de l'Impératrice, 64200  Biarritz",
       number: "+1 3102375745",
       time: "10:00 — 19:00",
-      lat: "43.485540204126494",
-      lng: "-1.55582400448962",
       code: [43.485540204126494, -1.55582400448962],
     },
     {
@@ -59,8 +48,6 @@ const Store = () => {
       desc: "Via Montenapoleone,18 angolo Via Gesù, 20121 Milan",
       number: "+1 2128130005",
       time: "10:00 — 19:00",
-      lat: "45.46939884421385",
-      lng: "9.194595695652435",
       code: [45.46939884421385, 9.194595695652435],
     },
     {
@@ -70,8 +57,6 @@ const Store = () => {
       desc: "17-19 Avenue de Monte-Carlo, 98000 Monaco",
       number: "+33 157950666",
       time: "10:00 — 19:00",
-      lat: "43.738406762053785",
-      lng: "7.4275544532011555",
       code: [43.738406762053785, 7.4275544532011555],
     },
 
@@ -82,8 +67,6 @@ const Store = () => {
       desc: "116 Mount Street, Mayfair, W1K 3NH London",
       number: "",
       time: "10:00 — 19:00",
-      lat: "51.510138229017585",
-      lng: "-0.14887744621003865",
       code: [51.510138229017585, -0.14887744621003865],
     },
     {
@@ -93,8 +76,6 @@ const Store = () => {
       desc: "64, boulevard Haussmann, 75009 Paris",
       number: "+33 142825108",
       time: "10:00 — 19:00",
-      lat: "48.87464",
-      lng: "2.32826",
       code: [48.87464, 2.32826],
     },
     {
@@ -104,8 +85,7 @@ const Store = () => {
       desc: "20 East 63rd Street, 10065 New York",
       number: "+1 2128130005",
       time: "10:00 — 19:00",
-      lat: "40.76685",
-      lng: "-73.97040",
+  
       code: [40.76685, -73.9704],
     },
     {
@@ -115,8 +95,6 @@ const Store = () => {
       desc: "405 North Rodeo Drive, 90210 Beverly Hills",
       number: "+1 3102375745",
       time: "10:00 — 19:00",
-      lat: "34.06943048202772",
-      lng: "-118.40320508974011",
       code: [34.06943048202772, -118.40320508974011],
     },
     {
@@ -126,8 +104,6 @@ const Store = () => {
       desc: "9700 Collins Avenue, Bal Harbour, 33154 Miami",
       number: "+1 3058949235",
       time: "10:00 — 19:00",
-      lat: "35.939166515504624",
-      lng: "-118.33661544779294",
       code: [35.939166515504624, -118.33661544779294],
     },
   ];
@@ -148,7 +124,7 @@ const Store = () => {
         <div className={styles.map}>
   
 
-          <MapContainer zoom={25} center={center} ref={mapRef}>
+          <MapContainer zoom={25} center={data[0].code} ref={mapRef}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

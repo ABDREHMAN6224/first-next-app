@@ -10,7 +10,6 @@ const SingleProduct = ({title,desc,image,number,time,handleClick,code}) => {
         <h3>{title}</h3>
         <p>{number}</p>
         <p>{desc}</p>
-        {/* <p></p> */}
       </div>
       <div className={styles.img_time}>
         <h3>DAILY TIMES</h3>

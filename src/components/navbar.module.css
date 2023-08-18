@@ -70,17 +70,25 @@
     .down_container{
         display: none;
         visibility: hidden;
+        opacity: 0;
     }
     .first{
         display: none;
+        visibility: hidden;
+        opacity: 0;
     }
 }
 @media (max-width:768px){
-    .down_container{
-        display: none;
+  
+    .options{
         visibility: hidden;
-    }
-    .options,.icons{
         display: none;
+        opacity: 0;
     }
+    .icons{
+        visibility: hidden;
+        display: none;
+        opacity: 0;
+    }
+    
 }

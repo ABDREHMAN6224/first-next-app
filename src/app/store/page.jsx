@@ -14,52 +14,64 @@ const Store = () => {
   console.log(process.env.API_KEY);
   const data = [
     {
-      id:1,
+      id: 1,
       title: "MAISON GOYARD NEW YORK",
       image: "/s1.webp",
       number: "+1 2128130005",
       desc: "20 East 63rd Street, 10065 New York",
       time: "10:00 — 19:00",
+      lat: "40.747263450000005",
+      lng: "-73.82519382503959",
     },
     {
-      id:2,
+      id: 2,
       title: "MAISON GOYARD PARIS 66",
       image: "/s2.webp",
       number: "+33 157950666",
       desc: "66, Rue François 1er, 75008 Paris",
       time: "10:00 — 19:00",
+      lat: "34.0696501",
+      lng: "-118.3963062",
     },
     {
-      id:3,
+      id: 3,
       title: "MAISON GOYARD BEVERLY HILLS",
       image: "/s3.webp",
       number: "+1 3102375745",
       desc: "405 North Rodeo Drive, 90210 Beverly Hills",
       time: "10:00 — 19:00",
+      lat: "48.8270758",
+      lng: "2.356713",
     },
     {
-      id:4,
+      id: 4,
       title: "MAISON GOYARD NEW YORK",
       image: "/s1.webp",
       number: "+1 2128130005",
       desc: "20 East 63rd Street, 10065 New York",
       time: "10:00 — 19:00",
+      lat: "40.747263450000005",
+      lng: "-73.82519382503959",
     },
     {
-      id:5,
+      id: 5,
       title: "MAISON GOYARD PARIS 66",
       image: "/s2.webp",
       number: "+33 157950666",
       desc: "66, Rue François 1er, 75008 Paris",
       time: "10:00 — 19:00",
+      lat: "48.8270758",
+      lng: "2.356713",
     },
     {
-      id:6,
+      id: 6,
       title: "MAISON GOYARD BEVERLY HILLS",
       image: "/s3.webp",
       number: "+1 3102375745",
       desc: "405 North Rodeo Drive, 90210 Beverly Hills",
       time: "10:00 — 19:00",
+      lat: "34.0696501",
+      lng: "-118.3963062",
     },
   ];
   return (
@@ -74,7 +86,9 @@ const Store = () => {
               height: "100%",
             }}
           >
-            <Marker lat={center.lat} lng={center.lng}></Marker>
+            {data.map(d=>{
+              <Marker key={d.id} lat={d.lat} lng={d.lng}></Marker>
+            })}
           </GoogleMap>
         )}
       </div>

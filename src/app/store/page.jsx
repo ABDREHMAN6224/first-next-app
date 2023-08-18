@@ -4,7 +4,6 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import {FaChevronRight} from "react-icons/fa"
 import styles from "./store.module.css";
 import SingleProduct from "@/components/SingleProduct";
-import Map from "@/components/Map";
 const Store = () => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",

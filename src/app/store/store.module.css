@@ -1,16 +1,32 @@
 .page{
     background-color: #183f26;
     padding-top: 8rem;
-    height: 200vh;
     color: white;
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    overflow-y: scroll;
+    /* grid-template-columns: 2fr 1fr; */
 }
 .page::-webkit-scrollbar{
     opacity: 0;
 }
+.container::-webkit-scrollbar{
+    opacity: 0;
+}
+.data::-webkit-scrollbar{
+    opacity: 0;
+}
+.container{
+    overflow-y: scroll;
+    grid-template-columns: 2fr 1fr;
+    display: grid;
+    height: 100vh;
+    /* height: 100vh; */
+}
+.map{
+    height: 100vh;
+}
 .data{
+    height: 100vh;
+    overflow-y:scroll;
     padding-top: 3rem;
     width: 100%;
     display: flex;

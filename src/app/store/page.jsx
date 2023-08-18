@@ -1,130 +1,217 @@
-"use client";
-import React, { useMemo } from "react";
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+"use client"
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import {FaChevronRight} from "react-icons/fa"
 import styles from "./store.module.css";
 import SingleProduct from "@/components/SingleProduct";
-const Store = () => {
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: process.env.NEXT_PUBLIC_API_KEY,
-  });
 
-  const center = useMemo(() => ({ lat: 43, lng: -80 }), []);
-  console.log(process.env.API_KEY);
+import { MapContainer, TileLayer ,Marker,Popup} from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from 'leaflet';
+
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+    iconUrl: require('leaflet/dist/images/marker-icon.png'),
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});
+const Store = () => {
+ 
+
   const data = [
     {
       id: 1,
-      title: "MAISON GOYARD NEW YORK",
-      image: "/s1.webp",
+      image: "/s3.webp",
+      title: "Maison Goyard PARIS 233",
+      desc: "233 Rue Saint-Honoré, 75001 Paris",
       number: "+1 2128130005",
-      desc: "20 East 63rd Street, 10065 New York",
+      lat: "48.86650",
+      lng: "2.32891",
       time: "10:00 — 19:00",
-      lat: "40.747263450000005",
-      lng: "-73.82519382503959",
+      code: [48.8665, 2.32891],
     },
     {
       id: 2,
-      title: "MAISON GOYARD PARIS 66",
       image: "/s2.webp",
       number: "+33 157950666",
-      desc: "66, Rue François 1er, 75008 Paris",
+      title: "Maison Goyard PARIS 66",
       time: "10:00 — 19:00",
-      lat: "34.0696501",
-      lng: "-118.3963062",
+      desc: "66, Rue François 1er, 75008 Paris",
+      lng: "48.867555231276015",
+      lat: " 2.328820801885616",
+      code: [48.867555231276015, 2.328820801885616],
     },
     {
       id: 3,
-      title: "MAISON GOYARD BEVERLY HILLS",
       image: "/s3.webp",
+      title: "Maison Goyard Biarritz",
+      desc: "4 Avenue de l'Impératrice, 64200  Biarritz",
       number: "+1 3102375745",
-      desc: "405 North Rodeo Drive, 90210 Beverly Hills",
       time: "10:00 — 19:00",
-      lat: "48.8270758",
-      lng: "2.356713",
+      lat: "43.485540204126494",
+      lng: "-1.55582400448962",
+      code: [43.485540204126494, -1.55582400448962],
     },
     {
       id: 4,
-      title: "MAISON GOYARD NEW YORK",
-      image: "/s1.webp",
+      image: "/s4.webp",
+      title: "Maison Goyard Milan",
+      desc: "Via Montenapoleone,18 angolo Via Gesù, 20121 Milan",
       number: "+1 2128130005",
-      desc: "20 East 63rd Street, 10065 New York",
       time: "10:00 — 19:00",
-      lat: "40.747263450000005",
-      lng: "-73.82519382503959",
+      lat: "45.46939884421385",
+      lng: "9.194595695652435",
+      code: [45.46939884421385, 9.194595695652435],
     },
     {
       id: 5,
-      title: "MAISON GOYARD PARIS 66",
-      image: "/s2.webp",
+      image: "/s5.webp",
+      title: "Maison Goyard Monaco",
+      desc: "17-19 Avenue de Monte-Carlo, 98000 Monaco",
       number: "+33 157950666",
-      desc: "66, Rue François 1er, 75008 Paris",
       time: "10:00 — 19:00",
-      lat: "48.8270758",
-      lng: "2.356713",
+      lat: "43.738406762053785",
+      lng: "7.4275544532011555",
+      code: [43.738406762053785, 7.4275544532011555],
     },
+
     {
       id: 6,
-      title: "MAISON GOYARD BEVERLY HILLS",
-      image: "/s3.webp",
-      number: "+1 3102375745",
-      desc: "405 North Rodeo Drive, 90210 Beverly Hills",
+      image: "/s6.webp",
+      title: "MAISON GOYARD LONDON",
+      desc: "116 Mount Street, Mayfair, W1K 3NH London",
+      number: "",
       time: "10:00 — 19:00",
-      lat: "34.0696501",
-      lng: "-118.3963062",
+      lat: "51.510138229017585",
+      lng: "-0.14887744621003865",
+      code: [51.510138229017585, -0.14887744621003865],
+    },
+    {
+      id: 7,
+      image: "/s7.webp",
+      title: "MAISON GOYARD PARIS PRINTEMPS HAUSSMAN",
+      desc: "64, boulevard Haussmann, 75009 Paris",
+      number: "+33 142825108",
+      time: "10:00 — 19:00",
+      lat: "48.87464",
+      lng: "2.32826",
+      code: [48.87464, 2.32826],
+    },
+    {
+      id: 8,
+      image: "/s8.webp",
+      title: "MAISON GOYARD NEW YORK",
+      desc: "20 East 63rd Street, 10065 New York",
+      number: "+1 2128130005",
+      time: "10:00 — 19:00",
+      lat: "40.76685",
+      lng: "-73.97040",
+      code: [40.76685, -73.9704],
+    },
+    {
+      id: 9,
+      image: "/s9.webp",
+      title: "MAISON GOYARD BEVERLY HILLS",
+      desc: "405 North Rodeo Drive, 90210 Beverly Hills",
+      number: "+1 3102375745",
+      time: "10:00 — 19:00",
+      lat: "34.06943048202772",
+      lng: "-118.40320508974011",
+      code: [34.06943048202772, -118.40320508974011],
+    },
+    {
+      id: 10,
+      image: "/s10.webp",
+      title: "MAISON GOYARD MIAMI",
+      desc: "9700 Collins Avenue, Bal Harbour, 33154 Miami",
+      number: "+1 3058949235",
+      time: "10:00 — 19:00",
+      lat: "35.939166515504624",
+      lng: "-118.33661544779294",
+      code: [35.939166515504624, -118.33661544779294],
     },
   ];
+  const mapRef=useRef(null)
+ 
+
+    const handleClick=(d)=>{
+      const {current}=mapRef
+      mapRef.current.setView(d);
+      console.log(current);
+    
+    }
+
+   
   return (
     <div className={styles.page}>
-      <div className={styles.map}>
-        {isLoaded && (
-          <GoogleMap
-            zoom={10}
-            center={center}
-            mapContainerStyle={{
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            {data.map(d=>{
-              <Marker key={d.id} lat={d.lat} lng={d.lng}></Marker>
-            })}
-          </GoogleMap>
-        )}
-      </div>
-      <div className={styles.data}>
-        <div className={styles.info}>
-          <p>
-            Our Counters <FaChevronRight /> Find A Boutique
-          </p>
-          <h2>
-            FIND <br /> A <br />
-            BOUTIQUE
-          </h2>
-          <p>
-            Find a boutique by searching for a town or using your current
-            location.
-          </p>
-          <form action="">
-            <input type="text" placeholder="Find an Address" />
-            <p>use my current location</p>
-          </form>
-        </div>
-        <div className={styles.products}>
-          {data.map(d=>{
-            return <SingleProduct
-            key={d.id}
-              title={d.title}
-              image={d.image}
-              number={d.number}
-              desc={d.desc}
-              time={d.time}
-            />
+      <div className={styles.container}>
+        <div className={styles.map}>
+  
 
-          })}
+          <MapContainer zoom={25} center={center} ref={mapRef}>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {data.map((d) => {
+              <Marker key={d.id} position={[[51.505, -0.09]] } icon={L.divIcon({
+                    iconSize: [40, 40],
+                    iconAnchor: [38 / 2, 38 + 9],
+                    className: "marker",
+                    html: "🚩",
+                  })}/>
+              return (
+                <Marker
+                  position={d.code}
+                  icon={L.divIcon({
+                    iconSize: [40, 40],
+                    iconAnchor: [38 / 2, 38 + 9],
+                    className: "marker",
+                    html: "🚩",
+                  })}
+                >
+                  <Popup>{d.title}</Popup>
+                </Marker>
+              );
+            })}
+          </MapContainer>
+        </div>
+        <div className={styles.data}>
+          <div className={styles.info}>
+            <p>
+              Our Counters <FaChevronRight /> Find A Boutique
+            </p>
+            <h2>
+              FIND <br /> A <br />
+              BOUTIQUE
+            </h2>
+            <p>
+              Find a boutique by searching for a town or using your current
+              location.
+            </p>
+            <form action="">
+              <input type="text" placeholder="Find an Address" />
+              <p>use my current location</p>
+            </form>
+          </div>
+          <div className={styles.products}>
+            {data.map((d) => {
+              return (
+                <SingleProduct
+                  key={d.id}
+                  title={d.title}
+                  image={d.image}
+                  number={d.number}
+                  desc={d.desc}
+                  time={d.time}
+                  {...d}
+                  handleClick={handleClick}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
-    
     </div>
   );
 };

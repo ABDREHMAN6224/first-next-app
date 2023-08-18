@@ -12,41 +12,36 @@ const reader=Newsreader({
 const Testimonial = () => {
   const slides = [
     {
-      id:1,
-      image: "/s1.webp",
-      title: "Maison Goyard Biarritz",
-      desc: "4 Avenue de l'Impératrice, 64200  Biarritz",
+      id: 1,
+      image: "/s3.webp",
+      title: "Maison Goyard PARIS 233",
+      desc: "233 Rue Saint-Honoré, 75001 Paris",
     },
     {
-      id:2,
+      id: 2,
       image: "/s2.webp",
-      title: "Maison Goyard Biarritz",
-      desc: "4 Avenue de l'Impératrice, 64200  Biarritz",
+      title: "Maison Goyard PARIS 66",
+      desc: "66, Rue François 1er, 75008 Paris",
     },
     {
-      id:3,
+      id: 3,
       image: "/s3.webp",
       title: "Maison Goyard Biarritz",
       desc: "4 Avenue de l'Impératrice, 64200  Biarritz",
     },
     {
-      id:4,
-      image: "/s1.webp",
-      title: "Maison Goyard Biarritz",
-      desc: "4 Avenue de l'Impératrice, 64200  Biarritz",
+      id: 4,
+      image: "/s4.webp",
+      title: "Maison Goyard Milan",
+      desc: "Via Montenapoleone,18 angolo Via Gesù, 20121 Milan",
     },
     {
-      id:5,
-      image: "/s2.webp",
-      title: "Maison Goyard Biarritz",
-      desc: "4 Avenue de l'Impératrice, 64200  Biarritz",
+      id: 5,
+      image: "/s5.webp",
+      title: "Maison Goyard Monaco",
+      desc: "17-19 Avenue de Monte-Carlo, 98000 Monaco",
     },
-    {
-      id:6,
-      image: "/s3.webp",
-      title: "Maison Goyard Biarritz",
-      desc: "4 Avenue de l'Impératrice, 64200  Biarritz",
-    },
+
   ];
       const [people, setPeople] = useState(slides);
       const [current, setCurrent] = useState(0);

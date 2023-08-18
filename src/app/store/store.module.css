@@ -84,7 +84,7 @@
         opacity: 0;
 
     } */
-    .page{
+    .container{
         grid-template-columns: 1fr;
     }
     /* .data{

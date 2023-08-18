@@ -154,14 +154,8 @@ const Store = () => {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {data.map((d) => {
-              <Marker key={d.id} position={[[51.505, -0.09]] } icon={L.divIcon({
-                    iconSize: [40, 40],
-                    iconAnchor: [38 / 2, 38 + 9],
-                    className: "marker",
-                    html: "🚩",
-                  })}/>
               return (
-                <Marker
+                <Marker key={d.id}
                   position={d.code}
                   icon={L.divIcon({
                     iconSize: [40, 40],

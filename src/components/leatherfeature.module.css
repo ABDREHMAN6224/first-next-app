@@ -26,6 +26,7 @@
 @media (max-width:990px){
     .image_container{
         grid-template-columns: 1fr;
+        padding: 3rem 0;
     }
     .dog{
         display: none;

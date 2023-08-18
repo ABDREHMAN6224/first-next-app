@@ -8,14 +8,17 @@ import Testimonial from '@/components/Testimonial';
 export default function Home() {
   const products=[
     {
+      id:1,
     image:"p1.webp",
     title:"boston 50 bag"
   },
     {
+      id:2,
     image:"p2.webp",
     title:"bourget pm trolley case "
   },
     {
+      id:3,
     image:"p3.webp",
     title:"artois gm bag"
   },

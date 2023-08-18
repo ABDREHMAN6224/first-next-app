@@ -20,7 +20,7 @@
         grid-template-columns: 1fr 1fr;
     }
 }
-@media (max-width:768x){
+@media (max-width:768px){
     .products_container{
         grid-template-columns: 1fr ;
     }

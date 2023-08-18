@@ -22,7 +22,7 @@ const LeatherFeatures = () => {
           </div>
         </div>
         <div className={styles.image}>
-          <Image src={"/strips.webp"} width={400} height={450} alt="dog" />
+          <Image src={"/strips.webp"} width={300} height={450} alt="dog" />
           <div className={styles.data}>
           <Underlined text={"Discover"} color="black" />
           </div>

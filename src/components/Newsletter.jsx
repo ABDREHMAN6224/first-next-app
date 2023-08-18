@@ -2,10 +2,11 @@ import React from 'react'
 import styles from "./newsletter.module.css"
 import Image from 'next/image'
 import { Newsreader } from 'next/font/google'
-const reader=Newsreader({
-  subsets:['latin'],
-  weight:['300']
-})
+const reader = Newsreader({
+  subsets: ["latin"],
+  weight: ["300"],
+  display: "swap",
+});
 const Newsletter = () => {
   return (
     <div className={styles.page}>

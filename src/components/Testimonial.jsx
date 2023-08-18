@@ -6,7 +6,8 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import Image from 'next/image';
 const reader=Newsreader({
   subsets:["latin"],
-  weight:"300"
+  weight:"300",
+  display:"swap"
 })
 const Testimonial = () => {
   const slides = [

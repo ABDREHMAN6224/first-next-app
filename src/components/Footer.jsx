@@ -7,6 +7,7 @@ import {FaInstagram,FaYoutube,FaTwitter,FaFacebook,FaWeibo} from "react-icons/fa
 const reader = Newsreader({
   subsets: ["latin"],
   weight: ["300"],
+  display: "swap",
 });
 const Footer = () => {
   return (

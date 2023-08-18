@@ -6,6 +6,7 @@ import Underlined from './Underlined';
 const newspaper = Newsreader({
   subsets: ["latin"],
   weight: ["300"],
+  display: "swap",
 });
 const LeatherGoods = () => {
   return (

@@ -3,10 +3,11 @@ import React from 'react'
 import styles from "./featured.module.css"
 import {Newsreader} from "next/font/google"
 import Product from './Product'
-const newspaper=Newsreader({
-    subsets:['latin'],
-    weight:['300']
-})
+const newspaper = Newsreader({
+  subsets: ["latin"],
+  weight: ["300"],
+  display: "swap",
+});
 const data = [
   {
     image: "b1.webp",
